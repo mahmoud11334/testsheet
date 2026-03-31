@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test Sheet</title>
+  <link rel="icon" href="https://img.icons8.com/?size=100&id=WxWh18GEkDgr&format=png&color=000000" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-icon">↫</div>
+      <div>
+        <h1>نتائج الطلاب</h1>
+        <p>العرض</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="controls-bar">
+    <select id="sortSelect" class="sort-select">
+      <option value="default">↕ الترتيب الافتراضي</option>
+      <option value="name">أ-ي ترتيب حسب الاسم</option>
+      <option value="markHigh">↑ الأعلى درجات</option>
+      <option value="markLow">↓ الأقل درجات</option>
+      <option value="id">ترتيب حسب ID</option>
+    </select>
+    <button id="adminBtn" class="admin-btn">لوحة الإدارة</button>
+  </div>
+
+  <div id="loading" class="loading-state">
+    <div class="spinner"></div>
+    <span>جاري تحميل البيانات...</span>
+  </div>
+
+  <div id="students" class="students-grid"></div>
+
+  <div id="adminModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h2>لوحة الإدارة</h2>
+          <p>إضافة · تعديل · حذف بيانات الطلاب · وتربيزات بلياردو و بينج</p>
+        </div>
+        <button id="closeModal" class="close-btn">✕</button>
+      </div>
+
+      <div class="modal-tabs">
+        <button class="tab-btn active" data-tab="addTab">إضافة</button>
+        <button class="tab-btn" data-tab="editTab">تعديل</button>
+        <button class="tab-btn" data-tab="deleteTab">حذف</button>
+      </div>
+
+      <div class="modal-body">
+        <div id="addTab" class="tab-content active">
+          <form id="addForm">
+            <div class="form-grid">
+              <input type="text"   class="field" name="sid"   placeholder="ID" required>
+              <input type="text"   class="field" name="sname" placeholder="اسم الطالب" required>
+              <input type="number" class="field" name="smark" placeholder="الدرجة" required>
+              <input type="url"    class="field" name="simg"  placeholder="رابط الصورة" required>
+            </div>
+            <button type="submit" class="submit-btn" id="addSubmitBtn">حفظ الطالب</button>
+          </form>
+        </div>
+
+        <div id="editTab" class="tab-content">
+          <div class="action-row">
+            <button id="editShowAllBtn" class="outline-btn">عرض الكل</button>
+            <button id="editSearchBtn"  class="outline-btn">بحث</button>
+          </div>
+          <div id="editSearchBox" class="search-panel hidden">
+            <div class="search-row">
+              <select id="editSearchType" class="field-sm">
+                <option value="id">بحث بـ ID</option>
+                <option value="name">بحث بالاسم</option>
+                <option value="mark">بحث بالدرجة</option>
+              </select>
+              <input id="editSearchInput" class="field-sm grow" placeholder="اكتب هنا...">
+              <button id="editSearchRunBtn" class="submit-btn-sm">بحث</button>
+            </div>
+          </div>
+          <div id="editList" class="item-list"></div>
+        </div>
+
+        <div id="deleteTab" class="tab-content">
+          <div class="action-row">
+            <button id="deleteShowAllBtn" class="outline-btn">عرض الكل</button>
+            <button id="deleteSearchBtn"  class="outline-btn">بحث</button>
+          </div>
+          <div id="deleteSearchBox" class="search-panel hidden">
+            <div class="search-row">
+              <select id="deleteSearchType" class="field-sm">
+                <option value="id">بحث بـ ID</option>
+                <option value="name">بحث بالاسم</option>
+                <option value="mark">بحث بالدرجة</option>
+              </select>
+              <input id="deleteSearchInput" class="field-sm grow" placeholder="اكتب هنا...">
+              <button id="deleteSearchRunBtn" class="submit-btn-sm">بحث</button>
+            </div>
+          </div>
+          <div id="deleteList" class="item-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
